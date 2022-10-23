@@ -736,7 +736,7 @@ public class winsparkle_h  {
     public static MethodHandle win_sparkle_set_dsa_pub_pem$MH() {
         return RuntimeHelper.requireNonNull(constants$6.win_sparkle_set_dsa_pub_pem$MH,"win_sparkle_set_dsa_pub_pem");
     }
-    public static int win_sparkle_set_dsa_pub_pem ( Addressable dsa_pub_pem) {
+    public static int win_sparkle_set_dsa_pub_pem ( String dsa_pub_pem) {
         var mh$ = win_sparkle_set_dsa_pub_pem$MH();
         try {
             return (int)mh$.invokeExact(dsa_pub_pem);
