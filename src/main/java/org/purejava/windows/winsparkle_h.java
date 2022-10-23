@@ -2,6 +2,7 @@
 
 package org.purejava.windows;
 
+import java.io.File;
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemoryLayout;
@@ -737,6 +738,10 @@ public class winsparkle_h  {
         return RuntimeHelper.requireNonNull(constants$6.win_sparkle_set_dsa_pub_pem$MH,"win_sparkle_set_dsa_pub_pem");
     }
     public static int win_sparkle_set_dsa_pub_pem ( String dsa_pub_pem) {
+        var file = new File(dsa_pub_pem);
+        if (!file.isFile()) {
+            throw new IllegalArgumentException("Unreadable file: " + dsa_pub_pem);
+        }
         var mh$ = win_sparkle_set_dsa_pub_pem$MH();
         try {
             return (int)mh$.invokeExact(dsa_pub_pem);
