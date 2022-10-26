@@ -5,6 +5,9 @@
 
 Java bindings for WinSparkle
 
+# Requires
+Java 19 (preview)
+- due to the use of the new Foreign Function & Memory API
 # Copyright
 Copyright (C) 2022 Ralph Plawetzki
 
