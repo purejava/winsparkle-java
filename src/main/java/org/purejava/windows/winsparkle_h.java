@@ -751,7 +751,7 @@ public class winsparkle_h  {
     public static MethodHandle win_sparkle_set_app_details$MH() {
         return RuntimeHelper.requireNonNull(constants$7.win_sparkle_set_app_details$MH,"win_sparkle_set_app_details");
     }
-    public static void win_sparkle_set_app_details ( String company_name,  String app_name,  String app_version) {
+    public static void win_sparkle_set_app_details ( Addressable company_name,  Addressable app_name,  Addressable app_version) {
         var mh$ = win_sparkle_set_app_details$MH();
         try {
             mh$.invokeExact(company_name, app_name, app_version);
