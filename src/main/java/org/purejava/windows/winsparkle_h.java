@@ -9,7 +9,6 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
-import java.net.URL;
 
 import static java.lang.foreign.ValueLayout.*;
 public class winsparkle_h  {
@@ -726,10 +725,10 @@ public class winsparkle_h  {
     public static MethodHandle win_sparkle_set_appcast_url$MH() {
         return RuntimeHelper.requireNonNull(constants$6.win_sparkle_set_appcast_url$MH,"win_sparkle_set_appcast_url");
     }
-    public static void win_sparkle_set_appcast_url (URL url) {
+    public static void win_sparkle_set_appcast_url ( Addressable url) {
         var mh$ = win_sparkle_set_appcast_url$MH();
         try {
-            mh$.invokeExact(url.toString());
+            mh$.invokeExact(url);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
