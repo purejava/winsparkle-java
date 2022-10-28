@@ -6,7 +6,7 @@
 
     <groupId>org.purejava</groupId>
     <artifactId>winsparkle-java</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
 
     <name>winsparkle-java</name>
     <description>Java bindings for WinSparkle</description>
