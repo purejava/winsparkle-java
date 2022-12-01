@@ -2,6 +2,7 @@
 ![winsparkle-java](winsparkle-java.svg)
 
 [![License](https://img.shields.io/github/license/purejava/keepassxc-cryptomator.svg)](https://github.com/purejava/keepassxc-cryptomator/blob/master/LICENSE)
+[![Maven Central](https://img.shields.io/maven-central/v/org.purejava/winsparkle-java.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22org.purejava%22%20AND%20a:%winsparkle-java%22)
 
 Java bindings for WinSparkle in 100% pure Java
 
@@ -17,7 +18,7 @@ The bindings come in two flavors:
 <dependency>
     <groupId>org.purejava</groupId>
     <artifactId>winsparkle-java</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 WinSparkle.dll gets loaded by the bindings. You don't need to worry about that.
@@ -27,7 +28,7 @@ WinSparkle.dll gets loaded by the bindings. You don't need to worry about that.
 <dependency>
     <groupId>org.purejava</groupId>
     <artifactId>winsparkle-java-without-dll</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 You need to place WinSparkle.dll in the Java library path yourself and the bindings take care of loading the dll from there.
