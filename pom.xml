@@ -9,7 +9,7 @@
     <version>1.0.0</version>
 
     <name>winsparkle-java-without-dll</name>
-    <description>Java bindings for WinSparkle</description>
+    <description>Java bindings for WinSparkle in 100% pure Java</description>
     <url>https://github.com/purejava/winsparkle-java/</url>
 
     <licenses>
