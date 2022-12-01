@@ -1,4 +1,4 @@
-name: Publish to GitHub Packages
+name: Publish winsparkle-java to GitHub Packages
 on:
   release:
     types: [published]

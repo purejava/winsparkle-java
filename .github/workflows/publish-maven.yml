@@ -1,4 +1,4 @@
-name: Publish to Maven Central
+name: Publish winsparkle-java to Maven Central
 on:
   release:
     types: [published]
