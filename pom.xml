@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.purejava</groupId>
-    <artifactId>winsparkle-java</artifactId>
+    <artifactId>winsparkle-java-without-dll</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>winsparkle-java</name>
+    <name>winsparkle-java-without-dll</name>
     <description>Java bindings for WinSparkle</description>
     <url>https://github.com/purejava/winsparkle-java/</url>
 
