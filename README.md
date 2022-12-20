@@ -51,6 +51,22 @@ Finally, you should shut WinSparkle down cleanly when the app exits:
 winsparkle_h.win_sparkle_cleanup();
 ```
 
+## A note on callbacks
+WinSparkle provides a lot of useful callbacks. Using them requires a shared session and to allocate the memory for a callback (aka setting the pointer to a function that is executed as the callback) in the shared session:
+```java
+// Declare a variable for the session
+private MemorySession session;
+
+// Open the session on initializing WinSparkle
+session = MemorySession.openShared();
+
+// Pass the session to the static method in MemoryAllocator when memory for a callback is allocated
+winsparkle_h.win_sparkle_set_did_find_update_callback(MemoryAllocator.ALLOCATE_CALLBACK_FOR(yourCallback, session));
+
+// Close the session when WinSparkle is shut down
+session.close();
+```
+
 # Copyright
 Copyright (C) 2022 Ralph Plawetzki
 
