@@ -19,7 +19,7 @@ class constants$14 {
         constants$14.win_sparkle_check_update_without_ui$FUNC
     );
     static final MemoryAddress NULL$ADDR = MemoryAddress.ofLong(0L);
-    static final MemorySegment WIN_SPARKLE_VERSION_STRING$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("0.7.0");
+    static final MemorySegment WIN_SPARKLE_VERSION_STRING$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("0.8.0");
 }
 
 
