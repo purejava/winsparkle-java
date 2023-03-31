@@ -109,7 +109,7 @@ public class winsparkle_h  {
         return (int)2L;
     }
     public static int __GLIBC_MINOR__() {
-        return (int)36L;
+        return (int)37L;
     }
     public static int _SYS_CDEFS_H() {
         return (int)1L;
@@ -238,7 +238,7 @@ public class winsparkle_h  {
         return (int)0L;
     }
     public static int WIN_SPARKLE_VERSION_MINOR() {
-        return (int)7L;
+        return (int)8L;
     }
     public static int WIN_SPARKLE_VERSION_MICRO() {
         return (int)0L;
