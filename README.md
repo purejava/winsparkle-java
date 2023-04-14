@@ -2,7 +2,7 @@
 ![winsparkle-java](winsparkle-java.svg)
 
 [![License](https://img.shields.io/github/license/purejava/winsparkle-java.svg)](https://github.com/purejava/winsparkle-java/blob/master/LICENSE)
-[![Maven Central](https://img.shields.io/maven-central/v/org.purejava/winsparkle-java.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22org.purejava%22%20AND%20a:winsparkle-java*)
+[![Maven Central](https://img.shields.io/maven-central/v/org.purejava/winsparkle-java.svg?label=Maven%20Central)](https://central.sonatype.com/search?q=winsparkle-java&smo=true&namespace=org.purejava)
 
 Java bindings for WinSparkle in 100% pure Java
 
