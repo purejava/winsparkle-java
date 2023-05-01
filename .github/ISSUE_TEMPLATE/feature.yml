@@ -1,5 +1,5 @@
 name: Feature Request
-description: Suggest an idea for this plugin
+description: Suggest an idea for this library or request new functionality
 labels: ["feature-request"]
 body:
   - type: checkboxes
