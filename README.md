@@ -60,8 +60,8 @@ private MemorySession session;
 // Open the session on initializing WinSparkle
 session = MemorySession.openShared();
 
-// Pass the session to the static method in MemoryAllocator when memory for a callback is allocated
-winsparkle_h.win_sparkle_set_did_find_update_callback(MemoryAllocator.ALLOCATE_CALLBACK_FOR(yourCallback, session));
+// Pass the session to the static method of the callback when memory for the callback is allocated
+win_sparkle_did_not_find_update_callback_t.allocate(yourCallback, session);
 
 // Close the session when WinSparkle is shut down
 session.close();
