@@ -68,6 +68,6 @@ session.close();
 ```
 
 # Copyright
-Copyright (C) 2022-2024 Ralph Plawetzki
+Copyright (C) 2022-2025 Ralph Plawetzki
 
 The winsparkle-java logo is made from [Icon Fonts](http://www.onlinewebfonts.com/icon) and is licensed by CC BY 3.0
