@@ -2,8 +2,30 @@
 
 package org.purejava.winsparkle;
 
+import java.lang.invoke.*;
+import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
+/**
+ * {@snippet lang=c :
+ * typedef struct win_sparkle_config_methods_tag {
+ *     int (*config_read)(const char *, wchar_t *, size_t, void *) __attribute__((cdecl));
+ *     void (*config_write)(const char *, const wchar_t *, void *) __attribute__((cdecl));
+ *     void (*config_delete)(const char *, void *) __attribute__((cdecl));
+ *     void *user_data;
+ * } win_sparkle_config_methods_t
+ * }
+ */
 public class win_sparkle_config_methods_t extends win_sparkle_config_methods_tag {
 
+    win_sparkle_config_methods_t() {
+        // Should not be called directly
+    }
 }
-
 

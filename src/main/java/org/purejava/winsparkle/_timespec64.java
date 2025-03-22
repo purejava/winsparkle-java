@@ -14,15 +14,15 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
- * struct timespec {
- *     time_t tv_sec;
+ * struct _timespec64 {
+ *     __time64_t tv_sec;
  *     long tv_nsec;
  * }
  * }
  */
-public class timespec {
+public class _timespec64 {
 
-    timespec() {
+    _timespec64() {
         // Should not be called directly
     }
 
@@ -30,7 +30,7 @@ public class timespec {
         winsparkle_h.C_LONG_LONG.withName("tv_sec"),
         winsparkle_h.C_LONG.withName("tv_nsec"),
         MemoryLayout.paddingLayout(4)
-    ).withName("timespec");
+    ).withName("_timespec64");
 
     /**
      * The layout of this struct
@@ -44,7 +44,7 @@ public class timespec {
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * time_t tv_sec
+     * __time64_t tv_sec
      * }
      */
     public static final OfLong tv_sec$layout() {
@@ -56,7 +56,7 @@ public class timespec {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * time_t tv_sec
+     * __time64_t tv_sec
      * }
      */
     public static final long tv_sec$offset() {
@@ -66,7 +66,7 @@ public class timespec {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * time_t tv_sec
+     * __time64_t tv_sec
      * }
      */
     public static long tv_sec(MemorySegment struct) {
@@ -76,7 +76,7 @@ public class timespec {
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * time_t tv_sec
+     * __time64_t tv_sec
      * }
      */
     public static void tv_sec(MemorySegment struct, long fieldValue) {
