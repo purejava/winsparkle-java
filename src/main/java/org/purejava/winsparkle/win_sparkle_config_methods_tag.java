@@ -2,177 +2,430 @@
 
 package org.purejava.winsparkle;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
+/**
+ * {@snippet lang=c :
+ * struct win_sparkle_config_methods_tag {
+ *     int (*config_read)(const char *, wchar_t *, size_t, void *) __attribute__((cdecl));
+ *     void (*config_write)(const char *, const wchar_t *, void *) __attribute__((cdecl));
+ *     void (*config_delete)(const char *, void *) __attribute__((cdecl));
+ *     void *user_data;
+ * }
+ * }
+ */
 public class win_sparkle_config_methods_tag {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_POINTER$LAYOUT.withName("config_read"),
-        Constants$root.C_POINTER$LAYOUT.withName("config_write"),
-        Constants$root.C_POINTER$LAYOUT.withName("config_delete"),
-        Constants$root.C_POINTER$LAYOUT.withName("user_data")
+    win_sparkle_config_methods_tag() {
+        // Should not be called directly
+    }
+
+    private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
+        winsparkle_h.C_POINTER.withName("config_read"),
+        winsparkle_h.C_POINTER.withName("config_write"),
+        winsparkle_h.C_POINTER.withName("config_delete"),
+        winsparkle_h.C_POINTER.withName("user_data")
     ).withName("win_sparkle_config_methods_tag");
-    public static MemoryLayout $LAYOUT() {
-        return win_sparkle_config_methods_tag.$struct$LAYOUT;
-    }
-    static final FunctionDescriptor config_read$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle config_read$MH = RuntimeHelper.downcallHandle(
-        win_sparkle_config_methods_tag.config_read$FUNC
-    );
-    public interface config_read {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, java.lang.foreign.MemoryAddress _x1, long _x2, java.lang.foreign.MemoryAddress _x3);
-        static MemorySegment allocate(config_read fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(config_read.class, fi, win_sparkle_config_methods_tag.config_read$FUNC, session);
-        }
-        static config_read ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, java.lang.foreign.MemoryAddress __x1, long __x2, java.lang.foreign.MemoryAddress __x3) -> {
-                try {
-                    return (int)win_sparkle_config_methods_tag.config_read$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, (java.lang.foreign.Addressable)__x1, __x2, (java.lang.foreign.Addressable)__x3);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
-        }
+    /**
+     * The layout of this struct
+     */
+    public static final GroupLayout layout() {
+        return $LAYOUT;
     }
 
-    static final VarHandle config_read$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("config_read"));
-    public static VarHandle config_read$VH() {
-        return win_sparkle_config_methods_tag.config_read$VH;
-    }
-    public static MemoryAddress config_read$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)win_sparkle_config_methods_tag.config_read$VH.get(seg);
-    }
-    public static void config_read$set( MemorySegment seg, MemoryAddress x) {
-        win_sparkle_config_methods_tag.config_read$VH.set(seg, x);
-    }
-    public static MemoryAddress config_read$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)win_sparkle_config_methods_tag.config_read$VH.get(seg.asSlice(index*sizeof()));
-    }
-    public static void config_read$set(MemorySegment seg, long index, MemoryAddress x) {
-        win_sparkle_config_methods_tag.config_read$VH.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static config_read config_read (MemorySegment segment, MemorySession session) {
-        return config_read.ofAddress(config_read$get(segment), session);
-    }
-    static final FunctionDescriptor config_write$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle config_write$MH = RuntimeHelper.downcallHandle(
-        win_sparkle_config_methods_tag.config_write$FUNC
-    );
-    public interface config_write {
+    /**
+     * {@snippet lang=c :
+     * int (*config_read)(const char *, wchar_t *, size_t, void *) __attribute__((cdecl))
+     * }
+     */
+    public static class config_read {
 
-        void apply(java.lang.foreign.MemoryAddress _x0, java.lang.foreign.MemoryAddress _x1, java.lang.foreign.MemoryAddress _x2);
-        static MemorySegment allocate(config_write fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(config_write.class, fi, win_sparkle_config_methods_tag.config_write$FUNC, session);
+        config_read() {
+            // Should not be called directly
         }
-        static config_write ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, java.lang.foreign.MemoryAddress __x1, java.lang.foreign.MemoryAddress __x2) -> {
-                try {
-                    win_sparkle_config_methods_tag.config_write$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, (java.lang.foreign.Addressable)__x1, (java.lang.foreign.Addressable)__x2);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
+
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            int apply(MemorySegment _x0, MemorySegment _x1, long _x2, MemorySegment _x3);
+        }
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+            winsparkle_h.C_INT,
+            winsparkle_h.C_POINTER,
+            winsparkle_h.C_POINTER,
+            winsparkle_h.C_LONG_LONG,
+            winsparkle_h.C_POINTER
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = winsparkle_h.upcallHandle(config_read.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(config_read.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, long _x2, MemorySegment _x3) {
+            try {
+                return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2, _x3);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
         }
     }
 
-    static final VarHandle config_write$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("config_write"));
-    public static VarHandle config_write$VH() {
-        return win_sparkle_config_methods_tag.config_write$VH;
-    }
-    public static MemoryAddress config_write$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)win_sparkle_config_methods_tag.config_write$VH.get(seg);
-    }
-    public static void config_write$set( MemorySegment seg, MemoryAddress x) {
-        win_sparkle_config_methods_tag.config_write$VH.set(seg, x);
-    }
-    public static MemoryAddress config_write$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)win_sparkle_config_methods_tag.config_write$VH.get(seg.asSlice(index*sizeof()));
-    }
-    public static void config_write$set(MemorySegment seg, long index, MemoryAddress x) {
-        win_sparkle_config_methods_tag.config_write$VH.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static config_write config_write (MemorySegment segment, MemorySession session) {
-        return config_write.ofAddress(config_write$get(segment), session);
-    }
-    static final FunctionDescriptor config_delete$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle config_delete$MH = RuntimeHelper.downcallHandle(
-        win_sparkle_config_methods_tag.config_delete$FUNC
-    );
-    public interface config_delete {
+    private static final AddressLayout config_read$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("config_read"));
 
-        void apply(java.lang.foreign.MemoryAddress _x0, java.lang.foreign.MemoryAddress _x1);
-        static MemorySegment allocate(config_delete fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(config_delete.class, fi, win_sparkle_config_methods_tag.config_delete$FUNC, session);
-        }
-        static config_delete ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, java.lang.foreign.MemoryAddress __x1) -> {
-                try {
-                    win_sparkle_config_methods_tag.config_delete$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, (java.lang.foreign.Addressable)__x1);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
-        }
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int (*config_read)(const char *, wchar_t *, size_t, void *) __attribute__((cdecl))
+     * }
+     */
+    public static final AddressLayout config_read$layout() {
+        return config_read$LAYOUT;
     }
 
-    static final VarHandle config_delete$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("config_delete"));
-    public static VarHandle config_delete$VH() {
-        return win_sparkle_config_methods_tag.config_delete$VH;
+    private static final long config_read$OFFSET = 0;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int (*config_read)(const char *, wchar_t *, size_t, void *) __attribute__((cdecl))
+     * }
+     */
+    public static final long config_read$offset() {
+        return config_read$OFFSET;
     }
-    public static MemoryAddress config_delete$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)win_sparkle_config_methods_tag.config_delete$VH.get(seg);
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int (*config_read)(const char *, wchar_t *, size_t, void *) __attribute__((cdecl))
+     * }
+     */
+    public static MemorySegment config_read(MemorySegment struct) {
+        return struct.get(config_read$LAYOUT, config_read$OFFSET);
     }
-    public static void config_delete$set( MemorySegment seg, MemoryAddress x) {
-        win_sparkle_config_methods_tag.config_delete$VH.set(seg, x);
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int (*config_read)(const char *, wchar_t *, size_t, void *) __attribute__((cdecl))
+     * }
+     */
+    public static void config_read(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(config_read$LAYOUT, config_read$OFFSET, fieldValue);
     }
-    public static MemoryAddress config_delete$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)win_sparkle_config_methods_tag.config_delete$VH.get(seg.asSlice(index*sizeof()));
+
+    /**
+     * {@snippet lang=c :
+     * void (*config_write)(const char *, const wchar_t *, void *) __attribute__((cdecl))
+     * }
+     */
+    public static class config_write {
+
+        config_write() {
+            // Should not be called directly
+        }
+
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            void apply(MemorySegment _x0, MemorySegment _x1, MemorySegment _x2);
+        }
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
+            winsparkle_h.C_POINTER,
+            winsparkle_h.C_POINTER,
+            winsparkle_h.C_POINTER
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = winsparkle_h.upcallHandle(config_write.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(config_write.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static void invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, MemorySegment _x2) {
+            try {
+                 DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
+        }
     }
-    public static void config_delete$set(MemorySegment seg, long index, MemoryAddress x) {
-        win_sparkle_config_methods_tag.config_delete$VH.set(seg.asSlice(index*sizeof()), x);
+
+    private static final AddressLayout config_write$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("config_write"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * void (*config_write)(const char *, const wchar_t *, void *) __attribute__((cdecl))
+     * }
+     */
+    public static final AddressLayout config_write$layout() {
+        return config_write$LAYOUT;
     }
-    public static config_delete config_delete (MemorySegment segment, MemorySession session) {
-        return config_delete.ofAddress(config_delete$get(segment), session);
+
+    private static final long config_write$OFFSET = 8;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * void (*config_write)(const char *, const wchar_t *, void *) __attribute__((cdecl))
+     * }
+     */
+    public static final long config_write$offset() {
+        return config_write$OFFSET;
     }
-    static final VarHandle user_data$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("user_data"));
-    public static VarHandle user_data$VH() {
-        return win_sparkle_config_methods_tag.user_data$VH;
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * void (*config_write)(const char *, const wchar_t *, void *) __attribute__((cdecl))
+     * }
+     */
+    public static MemorySegment config_write(MemorySegment struct) {
+        return struct.get(config_write$LAYOUT, config_write$OFFSET);
     }
-    public static MemoryAddress user_data$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)win_sparkle_config_methods_tag.user_data$VH.get(seg);
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * void (*config_write)(const char *, const wchar_t *, void *) __attribute__((cdecl))
+     * }
+     */
+    public static void config_write(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(config_write$LAYOUT, config_write$OFFSET, fieldValue);
     }
-    public static void user_data$set( MemorySegment seg, MemoryAddress x) {
-        win_sparkle_config_methods_tag.user_data$VH.set(seg, x);
+
+    /**
+     * {@snippet lang=c :
+     * void (*config_delete)(const char *, void *) __attribute__((cdecl))
+     * }
+     */
+    public static class config_delete {
+
+        config_delete() {
+            // Should not be called directly
+        }
+
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            void apply(MemorySegment _x0, MemorySegment _x1);
+        }
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
+            winsparkle_h.C_POINTER,
+            winsparkle_h.C_POINTER
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = winsparkle_h.upcallHandle(config_delete.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(config_delete.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static void invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1) {
+            try {
+                 DOWN$MH.invokeExact(funcPtr, _x0, _x1);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
+        }
     }
-    public static MemoryAddress user_data$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)win_sparkle_config_methods_tag.user_data$VH.get(seg.asSlice(index*sizeof()));
+
+    private static final AddressLayout config_delete$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("config_delete"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * void (*config_delete)(const char *, void *) __attribute__((cdecl))
+     * }
+     */
+    public static final AddressLayout config_delete$layout() {
+        return config_delete$LAYOUT;
     }
-    public static void user_data$set(MemorySegment seg, long index, MemoryAddress x) {
-        win_sparkle_config_methods_tag.user_data$VH.set(seg.asSlice(index*sizeof()), x);
+
+    private static final long config_delete$OFFSET = 16;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * void (*config_delete)(const char *, void *) __attribute__((cdecl))
+     * }
+     */
+    public static final long config_delete$offset() {
+        return config_delete$OFFSET;
     }
-    public static long sizeof() { return $LAYOUT().byteSize(); }
-    public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
-        return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * void (*config_delete)(const char *, void *) __attribute__((cdecl))
+     * }
+     */
+    public static MemorySegment config_delete(MemorySegment struct) {
+        return struct.get(config_delete$LAYOUT, config_delete$OFFSET);
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * void (*config_delete)(const char *, void *) __attribute__((cdecl))
+     * }
+     */
+    public static void config_delete(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(config_delete$LAYOUT, config_delete$OFFSET, fieldValue);
+    }
+
+    private static final AddressLayout user_data$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("user_data"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * void *user_data
+     * }
+     */
+    public static final AddressLayout user_data$layout() {
+        return user_data$LAYOUT;
+    }
+
+    private static final long user_data$OFFSET = 24;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * void *user_data
+     * }
+     */
+    public static final long user_data$offset() {
+        return user_data$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * void *user_data
+     * }
+     */
+    public static MemorySegment user_data(MemorySegment struct) {
+        return struct.get(user_data$LAYOUT, user_data$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * void *user_data
+     * }
+     */
+    public static void user_data(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(user_data$LAYOUT, user_data$OFFSET, fieldValue);
+    }
+
+    /**
+     * Obtains a slice of {@code arrayParam} which selects the array element at {@code index}.
+     * The returned segment has address {@code arrayParam.address() + index * layout().byteSize()}
+     */
+    public static MemorySegment asSlice(MemorySegment array, long index) {
+        return array.asSlice(layout().byteSize() * index);
+    }
+
+    /**
+     * The size (in bytes) of this struct
+     */
+    public static long sizeof() { return layout().byteSize(); }
+
+    /**
+     * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}
+     */
+    public static MemorySegment allocate(SegmentAllocator allocator) {
+        return allocator.allocate(layout());
+    }
+
+    /**
+     * Allocate an array of size {@code elementCount} using {@code allocator}.
+     * The returned segment has size {@code elementCount * layout().byteSize()}.
+     */
+    public static MemorySegment allocateArray(long elementCount, SegmentAllocator allocator) {
+        return allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout()));
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction} (if any).
+     * The returned segment has size {@code layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, Arena arena, Consumer<MemorySegment> cleanup) {
+        return reinterpret(addr, 1, arena, cleanup);
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction} (if any).
+     * The returned segment has size {@code elementCount * layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, long elementCount, Arena arena, Consumer<MemorySegment> cleanup) {
+        return addr.reinterpret(layout().byteSize() * elementCount, arena, cleanup);
+    }
 }
-
 

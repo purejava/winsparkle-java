@@ -14,23 +14,22 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
- * struct timespec {
- *     time_t tv_sec;
- *     long tv_nsec;
+ * struct __crt_locale_pointers {
+ *     struct __crt_locale_data *locinfo;
+ *     struct __crt_multibyte_data *mbcinfo;
  * }
  * }
  */
-public class timespec {
+public class __crt_locale_pointers {
 
-    timespec() {
+    __crt_locale_pointers() {
         // Should not be called directly
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        winsparkle_h.C_LONG_LONG.withName("tv_sec"),
-        winsparkle_h.C_LONG.withName("tv_nsec"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("timespec");
+        winsparkle_h.C_POINTER.withName("locinfo"),
+        winsparkle_h.C_POINTER.withName("mbcinfo")
+    ).withName("__crt_locale_pointers");
 
     /**
      * The layout of this struct
@@ -39,92 +38,92 @@ public class timespec {
         return $LAYOUT;
     }
 
-    private static final OfLong tv_sec$LAYOUT = (OfLong)$LAYOUT.select(groupElement("tv_sec"));
+    private static final AddressLayout locinfo$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("locinfo"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * time_t tv_sec
+     * struct __crt_locale_data *locinfo
      * }
      */
-    public static final OfLong tv_sec$layout() {
-        return tv_sec$LAYOUT;
+    public static final AddressLayout locinfo$layout() {
+        return locinfo$LAYOUT;
     }
 
-    private static final long tv_sec$OFFSET = 0;
+    private static final long locinfo$OFFSET = 0;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * time_t tv_sec
+     * struct __crt_locale_data *locinfo
      * }
      */
-    public static final long tv_sec$offset() {
-        return tv_sec$OFFSET;
+    public static final long locinfo$offset() {
+        return locinfo$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * time_t tv_sec
+     * struct __crt_locale_data *locinfo
      * }
      */
-    public static long tv_sec(MemorySegment struct) {
-        return struct.get(tv_sec$LAYOUT, tv_sec$OFFSET);
+    public static MemorySegment locinfo(MemorySegment struct) {
+        return struct.get(locinfo$LAYOUT, locinfo$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * time_t tv_sec
+     * struct __crt_locale_data *locinfo
      * }
      */
-    public static void tv_sec(MemorySegment struct, long fieldValue) {
-        struct.set(tv_sec$LAYOUT, tv_sec$OFFSET, fieldValue);
+    public static void locinfo(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(locinfo$LAYOUT, locinfo$OFFSET, fieldValue);
     }
 
-    private static final OfInt tv_nsec$LAYOUT = (OfInt)$LAYOUT.select(groupElement("tv_nsec"));
+    private static final AddressLayout mbcinfo$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("mbcinfo"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * long tv_nsec
+     * struct __crt_multibyte_data *mbcinfo
      * }
      */
-    public static final OfInt tv_nsec$layout() {
-        return tv_nsec$LAYOUT;
+    public static final AddressLayout mbcinfo$layout() {
+        return mbcinfo$LAYOUT;
     }
 
-    private static final long tv_nsec$OFFSET = 8;
+    private static final long mbcinfo$OFFSET = 8;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * long tv_nsec
+     * struct __crt_multibyte_data *mbcinfo
      * }
      */
-    public static final long tv_nsec$offset() {
-        return tv_nsec$OFFSET;
+    public static final long mbcinfo$offset() {
+        return mbcinfo$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * long tv_nsec
+     * struct __crt_multibyte_data *mbcinfo
      * }
      */
-    public static int tv_nsec(MemorySegment struct) {
-        return struct.get(tv_nsec$LAYOUT, tv_nsec$OFFSET);
+    public static MemorySegment mbcinfo(MemorySegment struct) {
+        return struct.get(mbcinfo$LAYOUT, mbcinfo$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * long tv_nsec
+     * struct __crt_multibyte_data *mbcinfo
      * }
      */
-    public static void tv_nsec(MemorySegment struct, int fieldValue) {
-        struct.set(tv_nsec$LAYOUT, tv_nsec$OFFSET, fieldValue);
+    public static void mbcinfo(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(mbcinfo$LAYOUT, mbcinfo$OFFSET, fieldValue);
     }
 
     /**
