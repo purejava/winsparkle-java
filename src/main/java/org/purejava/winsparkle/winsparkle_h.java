@@ -343,19 +343,19 @@ public class winsparkle_h {
     public static int WIN_SPARKLE_VERSION_MAJOR() {
         return WIN_SPARKLE_VERSION_MAJOR;
     }
-    private static final int WIN_SPARKLE_VERSION_MINOR = (int)8L;
+    private static final int WIN_SPARKLE_VERSION_MINOR = (int)9L;
     /**
      * {@snippet lang=c :
-     * #define WIN_SPARKLE_VERSION_MINOR 8
+     * #define WIN_SPARKLE_VERSION_MINOR 9
      * }
      */
     public static int WIN_SPARKLE_VERSION_MINOR() {
         return WIN_SPARKLE_VERSION_MINOR;
     }
-    private static final int WIN_SPARKLE_VERSION_MICRO = (int)3L;
+    private static final int WIN_SPARKLE_VERSION_MICRO = (int)0L;
     /**
      * {@snippet lang=c :
-     * #define WIN_SPARKLE_VERSION_MICRO 3
+     * #define WIN_SPARKLE_VERSION_MICRO 0
      * }
      */
     public static int WIN_SPARKLE_VERSION_MICRO() {
@@ -4509,6 +4509,64 @@ public class winsparkle_h {
         }
     }
 
+    private static class win_sparkle_set_eddsa_public_key {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            winsparkle_h.C_INT,
+            winsparkle_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = winsparkle_h.findOrThrow("win_sparkle_set_eddsa_public_key");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int win_sparkle_set_eddsa_public_key(const char *pubkey)
+     * }
+     */
+    public static FunctionDescriptor win_sparkle_set_eddsa_public_key$descriptor() {
+        return win_sparkle_set_eddsa_public_key.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int win_sparkle_set_eddsa_public_key(const char *pubkey)
+     * }
+     */
+    public static MethodHandle win_sparkle_set_eddsa_public_key$handle() {
+        return win_sparkle_set_eddsa_public_key.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int win_sparkle_set_eddsa_public_key(const char *pubkey)
+     * }
+     */
+    public static MemorySegment win_sparkle_set_eddsa_public_key$address() {
+        return win_sparkle_set_eddsa_public_key.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int win_sparkle_set_eddsa_public_key(const char *pubkey)
+     * }
+     */
+    public static int win_sparkle_set_eddsa_public_key(MemorySegment pubkey) {
+        var mh$ = win_sparkle_set_eddsa_public_key.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("win_sparkle_set_eddsa_public_key", pubkey);
+            }
+            return (int)mh$.invokeExact(pubkey);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class win_sparkle_set_app_details {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             winsparkle_h.C_POINTER,
@@ -6061,13 +6119,13 @@ public class winsparkle_h {
     }
     /**
      * {@snippet lang=c :
-     * #define WIN_SPARKLE_VERSION_STRING "0.8.3"
+     * #define WIN_SPARKLE_VERSION_STRING "0.9.0"
      * }
      */
     public static MemorySegment WIN_SPARKLE_VERSION_STRING() {
         class Holder {
             static final MemorySegment WIN_SPARKLE_VERSION_STRING
-                = winsparkle_h.LIBRARY_ARENA.allocateFrom("0.8.3");
+                = winsparkle_h.LIBRARY_ARENA.allocateFrom("0.9.0");
         }
         return Holder.WIN_SPARKLE_VERSION_STRING;
     }
