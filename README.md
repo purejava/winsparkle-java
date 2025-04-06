@@ -12,22 +12,22 @@ Java 22
 # Usage
 The bindings come in two flavors:
 
-## Dependency *including* WinSparkle.dll 0.8.3
+## Dependency *including* WinSparkle.dll 0.9.0
 ```java
 <dependency>
     <groupId>org.purejava</groupId>
     <artifactId>winsparkle-java</artifactId>
-    <version>1.2.1</version>
+    <version>1.3.0</version>
 </dependency>
 ```
 WinSparkle.dll gets loaded by the bindings. You don't need to worry about that.
 
-## Dependency *excluding* WinSparkle.dll 0.8.3
+## Dependency *excluding* WinSparkle.dll 0.9.0
 ```java
 <dependency>
     <groupId>org.purejava</groupId>
     <artifactId>winsparkle-java-without-dll</artifactId>
-    <version>1.2.1</version>
+    <version>1.3.0</version>
 </dependency>
 ```
 You need to place WinSparkle.dll in the Java library path yourself and the bindings take care of loading the dll from there.
