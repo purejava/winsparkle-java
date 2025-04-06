@@ -17,7 +17,7 @@ The bindings come in two flavors:
 <dependency>
     <groupId>org.purejava</groupId>
     <artifactId>winsparkle-java</artifactId>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
 </dependency>
 ```
 WinSparkle.dll gets loaded by the bindings. You don't need to worry about that.
@@ -27,7 +27,7 @@ WinSparkle.dll gets loaded by the bindings. You don't need to worry about that.
 <dependency>
     <groupId>org.purejava</groupId>
     <artifactId>winsparkle-java-without-dll</artifactId>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
 </dependency>
 ```
 You need to place WinSparkle.dll in the Java library path yourself and the bindings take care of loading the dll from there.
