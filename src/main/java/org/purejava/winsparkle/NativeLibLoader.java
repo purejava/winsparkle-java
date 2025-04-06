@@ -12,7 +12,9 @@ import java.util.Objects;
 public class NativeLibLoader {
 
     private static final Logger LOG = LoggerFactory.getLogger(NativeLibLoader.class);
-    private static final String LIB = "/WinSparkle.dll";
+    private static final String WIN_SPARKLE_X86_64_DLL = "/WinSparkle_x86_64.dll";
+    private static final String WIN_SPARKLE_AARCH64_DLL = "/WinSparkle_aarch64.dll";
+    private static String LIBNAME;
     private static volatile boolean loaded = false;
 
     /**
@@ -22,18 +24,26 @@ public class NativeLibLoader {
      */
     public static synchronized void loadLib() {
         if (!loaded) {
-            try (var dll = NativeLibLoader.class.getResourceAsStream(LIB)) {
+            var arch = System.getProperty("os.arch");
+            if (arch.contains("amd64")) {
+                LOG.debug("Loading library for x86_64 architecture");
+                LIBNAME = WIN_SPARKLE_X86_64_DLL;
+            } else if (arch.contains("aarch64")) {
+                LOG.debug("Loading library for aarch64 architecture");
+                LIBNAME = WIN_SPARKLE_AARCH64_DLL;
+            }
+            try (var dll = NativeLibLoader.class.getResourceAsStream(LIBNAME)) {
                 Objects.requireNonNull(dll);
                 Path tmpPath = Files.createTempFile("lib", ".dll");
                 Files.copy(dll, tmpPath, StandardCopyOption.REPLACE_EXISTING);
                 System.load(tmpPath.toString());
                 loaded = true;
             } catch (NullPointerException e) {
-                LOG.error("Did not find resource " + LIB, e);
+                LOG.error("Did not find resource " + LIBNAME, e);
             } catch (IOException e) {
-                LOG.error("Failed to copy " + LIB + " to temp dir.", e);
+                LOG.error("Failed to copy " + LIBNAME + " to temp dir.", e);
             } catch (UnsatisfiedLinkError e) {
-                LOG.error("Failed to load lib from " + LIB, e);
+                LOG.error("Failed to load lib from " + LIBNAME, e);
             }
         }
     }
