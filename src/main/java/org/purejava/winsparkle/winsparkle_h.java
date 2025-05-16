@@ -352,10 +352,10 @@ public class winsparkle_h {
     public static int WIN_SPARKLE_VERSION_MINOR() {
         return WIN_SPARKLE_VERSION_MINOR;
     }
-    private static final int WIN_SPARKLE_VERSION_MICRO = (int)0L;
+    private static final int WIN_SPARKLE_VERSION_MICRO = (int)1L;
     /**
      * {@snippet lang=c :
-     * #define WIN_SPARKLE_VERSION_MICRO 0
+     * #define WIN_SPARKLE_VERSION_MICRO 1
      * }
      */
     public static int WIN_SPARKLE_VERSION_MICRO() {
@@ -6119,13 +6119,13 @@ public class winsparkle_h {
     }
     /**
      * {@snippet lang=c :
-     * #define WIN_SPARKLE_VERSION_STRING "0.9.0"
+     * #define WIN_SPARKLE_VERSION_STRING "0.9.1"
      * }
      */
     public static MemorySegment WIN_SPARKLE_VERSION_STRING() {
         class Holder {
             static final MemorySegment WIN_SPARKLE_VERSION_STRING
-                = winsparkle_h.LIBRARY_ARENA.allocateFrom("0.9.0");
+                = winsparkle_h.LIBRARY_ARENA.allocateFrom("0.9.1");
         }
         return Holder.WIN_SPARKLE_VERSION_STRING;
     }
