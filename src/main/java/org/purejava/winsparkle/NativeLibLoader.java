@@ -14,7 +14,6 @@ public class NativeLibLoader {
     private static final Logger LOG = LoggerFactory.getLogger(NativeLibLoader.class);
     private static final String WIN_SPARKLE_X86_64_DLL = "/WinSparkle_x86_64.dll";
     private static final String WIN_SPARKLE_AARCH64_DLL = "/WinSparkle_aarch64.dll";
-    private static String LIBNAME;
     private static volatile boolean loaded = false;
 
     /**
@@ -25,12 +24,16 @@ public class NativeLibLoader {
     public static synchronized void loadLib() {
         if (!loaded) {
             var arch = System.getProperty("os.arch");
+            final String LIBNAME;
             if (arch.contains("amd64")) {
                 LOG.debug("Loading library for x86_64 architecture");
                 LIBNAME = WIN_SPARKLE_X86_64_DLL;
             } else if (arch.contains("aarch64")) {
                 LOG.debug("Loading library for aarch64 architecture");
                 LIBNAME = WIN_SPARKLE_AARCH64_DLL;
+            } else {
+                LOG.warn("Unrecognized architecture: {}. Defaulting to x86_64 architecture", arch);
+                LIBNAME = WIN_SPARKLE_X86_64_DLL;
             }
             try (var dll = NativeLibLoader.class.getResourceAsStream(LIBNAME)) {
                 Objects.requireNonNull(dll);
