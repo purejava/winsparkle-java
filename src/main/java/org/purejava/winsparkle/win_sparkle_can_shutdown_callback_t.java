@@ -17,9 +17,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  * typedef int (*win_sparkle_can_shutdown_callback_t)() __attribute__((cdecl))
  * }
  */
-public class win_sparkle_can_shutdown_callback_t {
+public final class win_sparkle_can_shutdown_callback_t {
 
-    win_sparkle_can_shutdown_callback_t() {
+    private win_sparkle_can_shutdown_callback_t() {
         // Should not be called directly
     }
 
@@ -58,6 +58,8 @@ public class win_sparkle_can_shutdown_callback_t {
     public static int invoke(MemorySegment funcPtr) {
         try {
             return (int) DOWN$MH.invokeExact(funcPtr);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

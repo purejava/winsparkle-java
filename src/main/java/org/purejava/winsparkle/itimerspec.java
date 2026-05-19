@@ -14,24 +14,22 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
- * struct _Mbstatet {
- *     unsigned long _Wchar;
- *     unsigned short _Byte;
- *     unsigned short _State;
+ * struct itimerspec {
+ *     struct timespec it_interval;
+ *     struct timespec it_value;
  * }
  * }
  */
-public class _Mbstatet {
+public class itimerspec {
 
-    _Mbstatet() {
+    itimerspec() {
         // Should not be called directly
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        winsparkle_h.C_LONG.withName("_Wchar"),
-        winsparkle_h.C_SHORT.withName("_Byte"),
-        winsparkle_h.C_SHORT.withName("_State")
-    ).withName("_Mbstatet");
+        timespec.layout().withName("it_interval"),
+        timespec.layout().withName("it_value")
+    ).withName("itimerspec");
 
     /**
      * The layout of this struct
@@ -40,136 +38,92 @@ public class _Mbstatet {
         return $LAYOUT;
     }
 
-    private static final OfInt _Wchar$LAYOUT = (OfInt)$LAYOUT.select(groupElement("_Wchar"));
+    private static final GroupLayout it_interval$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("it_interval"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * unsigned long _Wchar
+     * struct timespec it_interval
      * }
      */
-    public static final OfInt _Wchar$layout() {
-        return _Wchar$LAYOUT;
+    public static final GroupLayout it_interval$layout() {
+        return it_interval$LAYOUT;
     }
 
-    private static final long _Wchar$OFFSET = 0;
+    private static final long it_interval$OFFSET = $LAYOUT.byteOffset(groupElement("it_interval"));
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * unsigned long _Wchar
+     * struct timespec it_interval
      * }
      */
-    public static final long _Wchar$offset() {
-        return _Wchar$OFFSET;
+    public static final long it_interval$offset() {
+        return it_interval$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * unsigned long _Wchar
+     * struct timespec it_interval
      * }
      */
-    public static int _Wchar(MemorySegment struct) {
-        return struct.get(_Wchar$LAYOUT, _Wchar$OFFSET);
+    public static MemorySegment it_interval(MemorySegment struct) {
+        return struct.asSlice(it_interval$OFFSET, it_interval$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * unsigned long _Wchar
+     * struct timespec it_interval
      * }
      */
-    public static void _Wchar(MemorySegment struct, int fieldValue) {
-        struct.set(_Wchar$LAYOUT, _Wchar$OFFSET, fieldValue);
+    public static void it_interval(MemorySegment struct, MemorySegment fieldValue) {
+        MemorySegment.copy(fieldValue, 0L, struct, it_interval$OFFSET, it_interval$LAYOUT.byteSize());
     }
 
-    private static final OfShort _Byte$LAYOUT = (OfShort)$LAYOUT.select(groupElement("_Byte"));
+    private static final GroupLayout it_value$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("it_value"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * unsigned short _Byte
+     * struct timespec it_value
      * }
      */
-    public static final OfShort _Byte$layout() {
-        return _Byte$LAYOUT;
+    public static final GroupLayout it_value$layout() {
+        return it_value$LAYOUT;
     }
 
-    private static final long _Byte$OFFSET = 4;
+    private static final long it_value$OFFSET = $LAYOUT.byteOffset(groupElement("it_value"));
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * unsigned short _Byte
+     * struct timespec it_value
      * }
      */
-    public static final long _Byte$offset() {
-        return _Byte$OFFSET;
+    public static final long it_value$offset() {
+        return it_value$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * unsigned short _Byte
+     * struct timespec it_value
      * }
      */
-    public static short _Byte(MemorySegment struct) {
-        return struct.get(_Byte$LAYOUT, _Byte$OFFSET);
+    public static MemorySegment it_value(MemorySegment struct) {
+        return struct.asSlice(it_value$OFFSET, it_value$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * unsigned short _Byte
+     * struct timespec it_value
      * }
      */
-    public static void _Byte(MemorySegment struct, short fieldValue) {
-        struct.set(_Byte$LAYOUT, _Byte$OFFSET, fieldValue);
-    }
-
-    private static final OfShort _State$LAYOUT = (OfShort)$LAYOUT.select(groupElement("_State"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * unsigned short _State
-     * }
-     */
-    public static final OfShort _State$layout() {
-        return _State$LAYOUT;
-    }
-
-    private static final long _State$OFFSET = 6;
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * unsigned short _State
-     * }
-     */
-    public static final long _State$offset() {
-        return _State$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * unsigned short _State
-     * }
-     */
-    public static short _State(MemorySegment struct) {
-        return struct.get(_State$LAYOUT, _State$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * unsigned short _State
-     * }
-     */
-    public static void _State(MemorySegment struct, short fieldValue) {
-        struct.set(_State$LAYOUT, _State$OFFSET, fieldValue);
+    public static void it_value(MemorySegment struct, MemorySegment fieldValue) {
+        MemorySegment.copy(fieldValue, 0L, struct, it_value$OFFSET, it_value$LAYOUT.byteSize());
     }
 
     /**

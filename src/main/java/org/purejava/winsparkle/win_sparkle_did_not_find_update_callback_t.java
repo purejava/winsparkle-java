@@ -17,9 +17,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  * typedef void (*win_sparkle_did_not_find_update_callback_t)() __attribute__((cdecl))
  * }
  */
-public class win_sparkle_did_not_find_update_callback_t {
+public final class win_sparkle_did_not_find_update_callback_t {
 
-    win_sparkle_did_not_find_update_callback_t() {
+    private win_sparkle_did_not_find_update_callback_t() {
         // Should not be called directly
     }
 
@@ -57,6 +57,8 @@ public class win_sparkle_did_not_find_update_callback_t {
     public static void invoke(MemorySegment funcPtr) {
         try {
              DOWN$MH.invokeExact(funcPtr);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

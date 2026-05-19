@@ -17,9 +17,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  * typedef int (*win_sparkle_user_run_installer_callback_t)(const wchar_t *) __attribute__((cdecl))
  * }
  */
-public class win_sparkle_user_run_installer_callback_t {
+public final class win_sparkle_user_run_installer_callback_t {
 
-    win_sparkle_user_run_installer_callback_t() {
+    private win_sparkle_user_run_installer_callback_t() {
         // Should not be called directly
     }
 
@@ -57,9 +57,11 @@ public class win_sparkle_user_run_installer_callback_t {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr,MemorySegment _x0) {
+    public static int invoke(MemorySegment funcPtr, MemorySegment _x0) {
         try {
             return (int) DOWN$MH.invokeExact(funcPtr, _x0);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

@@ -24,6 +24,8 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     int tm_wday;
  *     int tm_yday;
  *     int tm_isdst;
+ *     long tm_gmtoff;
+ *     const char *tm_zone;
  * }
  * }
  */
@@ -42,7 +44,10 @@ public class tm {
         winsparkle_h.C_INT.withName("tm_year"),
         winsparkle_h.C_INT.withName("tm_wday"),
         winsparkle_h.C_INT.withName("tm_yday"),
-        winsparkle_h.C_INT.withName("tm_isdst")
+        winsparkle_h.C_INT.withName("tm_isdst"),
+        MemoryLayout.paddingLayout(4),
+        winsparkle_h.C_LONG.withName("tm_gmtoff"),
+        winsparkle_h.C_POINTER.withName("tm_zone")
     ).withName("tm");
 
     /**
@@ -64,7 +69,7 @@ public class tm {
         return tm_sec$LAYOUT;
     }
 
-    private static final long tm_sec$OFFSET = 0;
+    private static final long tm_sec$OFFSET = $LAYOUT.byteOffset(groupElement("tm_sec"));
 
     /**
      * Offset for field:
@@ -108,7 +113,7 @@ public class tm {
         return tm_min$LAYOUT;
     }
 
-    private static final long tm_min$OFFSET = 4;
+    private static final long tm_min$OFFSET = $LAYOUT.byteOffset(groupElement("tm_min"));
 
     /**
      * Offset for field:
@@ -152,7 +157,7 @@ public class tm {
         return tm_hour$LAYOUT;
     }
 
-    private static final long tm_hour$OFFSET = 8;
+    private static final long tm_hour$OFFSET = $LAYOUT.byteOffset(groupElement("tm_hour"));
 
     /**
      * Offset for field:
@@ -196,7 +201,7 @@ public class tm {
         return tm_mday$LAYOUT;
     }
 
-    private static final long tm_mday$OFFSET = 12;
+    private static final long tm_mday$OFFSET = $LAYOUT.byteOffset(groupElement("tm_mday"));
 
     /**
      * Offset for field:
@@ -240,7 +245,7 @@ public class tm {
         return tm_mon$LAYOUT;
     }
 
-    private static final long tm_mon$OFFSET = 16;
+    private static final long tm_mon$OFFSET = $LAYOUT.byteOffset(groupElement("tm_mon"));
 
     /**
      * Offset for field:
@@ -284,7 +289,7 @@ public class tm {
         return tm_year$LAYOUT;
     }
 
-    private static final long tm_year$OFFSET = 20;
+    private static final long tm_year$OFFSET = $LAYOUT.byteOffset(groupElement("tm_year"));
 
     /**
      * Offset for field:
@@ -328,7 +333,7 @@ public class tm {
         return tm_wday$LAYOUT;
     }
 
-    private static final long tm_wday$OFFSET = 24;
+    private static final long tm_wday$OFFSET = $LAYOUT.byteOffset(groupElement("tm_wday"));
 
     /**
      * Offset for field:
@@ -372,7 +377,7 @@ public class tm {
         return tm_yday$LAYOUT;
     }
 
-    private static final long tm_yday$OFFSET = 28;
+    private static final long tm_yday$OFFSET = $LAYOUT.byteOffset(groupElement("tm_yday"));
 
     /**
      * Offset for field:
@@ -416,7 +421,7 @@ public class tm {
         return tm_isdst$LAYOUT;
     }
 
-    private static final long tm_isdst$OFFSET = 32;
+    private static final long tm_isdst$OFFSET = $LAYOUT.byteOffset(groupElement("tm_isdst"));
 
     /**
      * Offset for field:
@@ -446,6 +451,94 @@ public class tm {
      */
     public static void tm_isdst(MemorySegment struct, int fieldValue) {
         struct.set(tm_isdst$LAYOUT, tm_isdst$OFFSET, fieldValue);
+    }
+
+    private static final OfLong tm_gmtoff$LAYOUT = (OfLong)$LAYOUT.select(groupElement("tm_gmtoff"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * long tm_gmtoff
+     * }
+     */
+    public static final OfLong tm_gmtoff$layout() {
+        return tm_gmtoff$LAYOUT;
+    }
+
+    private static final long tm_gmtoff$OFFSET = $LAYOUT.byteOffset(groupElement("tm_gmtoff"));
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * long tm_gmtoff
+     * }
+     */
+    public static final long tm_gmtoff$offset() {
+        return tm_gmtoff$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * long tm_gmtoff
+     * }
+     */
+    public static long tm_gmtoff(MemorySegment struct) {
+        return struct.get(tm_gmtoff$LAYOUT, tm_gmtoff$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * long tm_gmtoff
+     * }
+     */
+    public static void tm_gmtoff(MemorySegment struct, long fieldValue) {
+        struct.set(tm_gmtoff$LAYOUT, tm_gmtoff$OFFSET, fieldValue);
+    }
+
+    private static final AddressLayout tm_zone$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("tm_zone"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * const char *tm_zone
+     * }
+     */
+    public static final AddressLayout tm_zone$layout() {
+        return tm_zone$LAYOUT;
+    }
+
+    private static final long tm_zone$OFFSET = $LAYOUT.byteOffset(groupElement("tm_zone"));
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * const char *tm_zone
+     * }
+     */
+    public static final long tm_zone$offset() {
+        return tm_zone$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * const char *tm_zone
+     * }
+     */
+    public static MemorySegment tm_zone(MemorySegment struct) {
+        return struct.get(tm_zone$LAYOUT, tm_zone$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * const char *tm_zone
+     * }
+     */
+    public static void tm_zone(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(tm_zone$LAYOUT, tm_zone$OFFSET, fieldValue);
     }
 
     /**
