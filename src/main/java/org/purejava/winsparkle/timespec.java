@@ -15,8 +15,8 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
 /**
  * {@snippet lang=c :
  * struct timespec {
- *     time_t tv_sec;
- *     long tv_nsec;
+ *     __time_t tv_sec;
+ *     __syscall_slong_t tv_nsec;
  * }
  * }
  */
@@ -27,9 +27,8 @@ public class timespec {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        winsparkle_h.C_LONG_LONG.withName("tv_sec"),
-        winsparkle_h.C_LONG.withName("tv_nsec"),
-        MemoryLayout.paddingLayout(4)
+        winsparkle_h.C_LONG.withName("tv_sec"),
+        winsparkle_h.C_LONG.withName("tv_nsec")
     ).withName("timespec");
 
     /**
@@ -44,19 +43,19 @@ public class timespec {
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * time_t tv_sec
+     * __time_t tv_sec
      * }
      */
     public static final OfLong tv_sec$layout() {
         return tv_sec$LAYOUT;
     }
 
-    private static final long tv_sec$OFFSET = 0;
+    private static final long tv_sec$OFFSET = $LAYOUT.byteOffset(groupElement("tv_sec"));
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * time_t tv_sec
+     * __time_t tv_sec
      * }
      */
     public static final long tv_sec$offset() {
@@ -66,7 +65,7 @@ public class timespec {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * time_t tv_sec
+     * __time_t tv_sec
      * }
      */
     public static long tv_sec(MemorySegment struct) {
@@ -76,31 +75,31 @@ public class timespec {
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * time_t tv_sec
+     * __time_t tv_sec
      * }
      */
     public static void tv_sec(MemorySegment struct, long fieldValue) {
         struct.set(tv_sec$LAYOUT, tv_sec$OFFSET, fieldValue);
     }
 
-    private static final OfInt tv_nsec$LAYOUT = (OfInt)$LAYOUT.select(groupElement("tv_nsec"));
+    private static final OfLong tv_nsec$LAYOUT = (OfLong)$LAYOUT.select(groupElement("tv_nsec"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * long tv_nsec
+     * __syscall_slong_t tv_nsec
      * }
      */
-    public static final OfInt tv_nsec$layout() {
+    public static final OfLong tv_nsec$layout() {
         return tv_nsec$LAYOUT;
     }
 
-    private static final long tv_nsec$OFFSET = 8;
+    private static final long tv_nsec$OFFSET = $LAYOUT.byteOffset(groupElement("tv_nsec"));
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * long tv_nsec
+     * __syscall_slong_t tv_nsec
      * }
      */
     public static final long tv_nsec$offset() {
@@ -110,20 +109,20 @@ public class timespec {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * long tv_nsec
+     * __syscall_slong_t tv_nsec
      * }
      */
-    public static int tv_nsec(MemorySegment struct) {
+    public static long tv_nsec(MemorySegment struct) {
         return struct.get(tv_nsec$LAYOUT, tv_nsec$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * long tv_nsec
+     * __syscall_slong_t tv_nsec
      * }
      */
-    public static void tv_nsec(MemorySegment struct, int fieldValue) {
+    public static void tv_nsec(MemorySegment struct, long fieldValue) {
         struct.set(tv_nsec$LAYOUT, tv_nsec$OFFSET, fieldValue);
     }
 

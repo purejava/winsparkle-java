@@ -14,22 +14,22 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
- * struct _timespec32 {
- *     __time32_t tv_sec;
- *     long tv_nsec;
+ * struct {
+ *     long long __clang_max_align_nonce1;
+ *     long double __clang_max_align_nonce2;
  * }
  * }
  */
-public class _timespec32 {
+public class max_align_t {
 
-    _timespec32() {
+    max_align_t() {
         // Should not be called directly
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        winsparkle_h.C_LONG.withName("tv_sec"),
-        winsparkle_h.C_LONG.withName("tv_nsec")
-    ).withName("_timespec32");
+        winsparkle_h.C_LONG_LONG.withName("__clang_max_align_nonce1"),
+        MemoryLayout.paddingLayout(24)
+    ).withName("$anon$19:9");
 
     /**
      * The layout of this struct
@@ -38,92 +38,48 @@ public class _timespec32 {
         return $LAYOUT;
     }
 
-    private static final OfInt tv_sec$LAYOUT = (OfInt)$LAYOUT.select(groupElement("tv_sec"));
+    private static final OfLong __clang_max_align_nonce1$LAYOUT = (OfLong)$LAYOUT.select(groupElement("__clang_max_align_nonce1"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * __time32_t tv_sec
+     * long long __clang_max_align_nonce1
      * }
      */
-    public static final OfInt tv_sec$layout() {
-        return tv_sec$LAYOUT;
+    public static final OfLong __clang_max_align_nonce1$layout() {
+        return __clang_max_align_nonce1$LAYOUT;
     }
 
-    private static final long tv_sec$OFFSET = 0;
+    private static final long __clang_max_align_nonce1$OFFSET = $LAYOUT.byteOffset(groupElement("__clang_max_align_nonce1"));
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * __time32_t tv_sec
+     * long long __clang_max_align_nonce1
      * }
      */
-    public static final long tv_sec$offset() {
-        return tv_sec$OFFSET;
+    public static final long __clang_max_align_nonce1$offset() {
+        return __clang_max_align_nonce1$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * __time32_t tv_sec
+     * long long __clang_max_align_nonce1
      * }
      */
-    public static int tv_sec(MemorySegment struct) {
-        return struct.get(tv_sec$LAYOUT, tv_sec$OFFSET);
+    public static long __clang_max_align_nonce1(MemorySegment struct) {
+        return struct.get(__clang_max_align_nonce1$LAYOUT, __clang_max_align_nonce1$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * __time32_t tv_sec
+     * long long __clang_max_align_nonce1
      * }
      */
-    public static void tv_sec(MemorySegment struct, int fieldValue) {
-        struct.set(tv_sec$LAYOUT, tv_sec$OFFSET, fieldValue);
-    }
-
-    private static final OfInt tv_nsec$LAYOUT = (OfInt)$LAYOUT.select(groupElement("tv_nsec"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * long tv_nsec
-     * }
-     */
-    public static final OfInt tv_nsec$layout() {
-        return tv_nsec$LAYOUT;
-    }
-
-    private static final long tv_nsec$OFFSET = 4;
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * long tv_nsec
-     * }
-     */
-    public static final long tv_nsec$offset() {
-        return tv_nsec$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * long tv_nsec
-     * }
-     */
-    public static int tv_nsec(MemorySegment struct) {
-        return struct.get(tv_nsec$LAYOUT, tv_nsec$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * long tv_nsec
-     * }
-     */
-    public static void tv_nsec(MemorySegment struct, int fieldValue) {
-        struct.set(tv_nsec$LAYOUT, tv_nsec$OFFSET, fieldValue);
+    public static void __clang_max_align_nonce1(MemorySegment struct, long fieldValue) {
+        struct.set(__clang_max_align_nonce1$LAYOUT, __clang_max_align_nonce1$OFFSET, fieldValue);
     }
 
     /**

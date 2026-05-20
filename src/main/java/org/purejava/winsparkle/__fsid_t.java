@@ -14,22 +14,20 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
- * struct __crt_locale_pointers {
- *     struct __crt_locale_data *locinfo;
- *     struct __crt_multibyte_data *mbcinfo;
+ * struct {
+ *     int __val[2];
  * }
  * }
  */
-public class __crt_locale_pointers {
+public class __fsid_t {
 
-    __crt_locale_pointers() {
+    __fsid_t() {
         // Should not be called directly
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        winsparkle_h.C_POINTER.withName("locinfo"),
-        winsparkle_h.C_POINTER.withName("mbcinfo")
-    ).withName("__crt_locale_pointers");
+        MemoryLayout.sequenceLayout(2, winsparkle_h.C_INT).withName("__val")
+    ).withName("$anon$155:12");
 
     /**
      * The layout of this struct
@@ -38,92 +36,81 @@ public class __crt_locale_pointers {
         return $LAYOUT;
     }
 
-    private static final AddressLayout locinfo$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("locinfo"));
+    private static final SequenceLayout __val$LAYOUT = (SequenceLayout)$LAYOUT.select(groupElement("__val"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * struct __crt_locale_data *locinfo
+     * int __val[2]
      * }
      */
-    public static final AddressLayout locinfo$layout() {
-        return locinfo$LAYOUT;
+    public static final SequenceLayout __val$layout() {
+        return __val$LAYOUT;
     }
 
-    private static final long locinfo$OFFSET = 0;
+    private static final long __val$OFFSET = $LAYOUT.byteOffset(groupElement("__val"));
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * struct __crt_locale_data *locinfo
+     * int __val[2]
      * }
      */
-    public static final long locinfo$offset() {
-        return locinfo$OFFSET;
+    public static final long __val$offset() {
+        return __val$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * struct __crt_locale_data *locinfo
+     * int __val[2]
      * }
      */
-    public static MemorySegment locinfo(MemorySegment struct) {
-        return struct.get(locinfo$LAYOUT, locinfo$OFFSET);
+    public static MemorySegment __val(MemorySegment struct) {
+        return struct.asSlice(__val$OFFSET, __val$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * struct __crt_locale_data *locinfo
+     * int __val[2]
      * }
      */
-    public static void locinfo(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(locinfo$LAYOUT, locinfo$OFFSET, fieldValue);
+    public static void __val(MemorySegment struct, MemorySegment fieldValue) {
+        MemorySegment.copy(fieldValue, 0L, struct, __val$OFFSET, __val$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout mbcinfo$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("mbcinfo"));
+    private static long[] __val$DIMS = { 2 };
 
     /**
-     * Layout for field:
+     * Dimensions for array field:
      * {@snippet lang=c :
-     * struct __crt_multibyte_data *mbcinfo
+     * int __val[2]
      * }
      */
-    public static final AddressLayout mbcinfo$layout() {
-        return mbcinfo$LAYOUT;
+    public static long[] __val$dimensions() {
+        return __val$DIMS;
     }
-
-    private static final long mbcinfo$OFFSET = 8;
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * struct __crt_multibyte_data *mbcinfo
-     * }
-     */
-    public static final long mbcinfo$offset() {
-        return mbcinfo$OFFSET;
-    }
+    private static final VarHandle __val$ELEM_HANDLE = __val$LAYOUT.varHandle(sequenceElement());
 
     /**
-     * Getter for field:
+     * Indexed getter for field:
      * {@snippet lang=c :
-     * struct __crt_multibyte_data *mbcinfo
+     * int __val[2]
      * }
      */
-    public static MemorySegment mbcinfo(MemorySegment struct) {
-        return struct.get(mbcinfo$LAYOUT, mbcinfo$OFFSET);
+    public static int __val(MemorySegment struct, long index0) {
+        return (int)__val$ELEM_HANDLE.get(struct, __val$OFFSET, index0);
     }
 
     /**
-     * Setter for field:
+     * Indexed setter for field:
      * {@snippet lang=c :
-     * struct __crt_multibyte_data *mbcinfo
+     * int __val[2]
      * }
      */
-    public static void mbcinfo(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(mbcinfo$LAYOUT, mbcinfo$OFFSET, fieldValue);
+    public static void __val(MemorySegment struct, long index0, int fieldValue) {
+        __val$ELEM_HANDLE.set(struct, __val$OFFSET, index0, fieldValue);
     }
 
     /**

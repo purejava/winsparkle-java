@@ -47,9 +47,9 @@ public class win_sparkle_config_methods_tag {
      * int (*config_read)(const char *, wchar_t *, size_t, void *) __attribute__((cdecl))
      * }
      */
-    public static class config_read {
+    public final static class config_read {
 
-        config_read() {
+        private config_read() {
             // Should not be called directly
         }
 
@@ -64,7 +64,7 @@ public class win_sparkle_config_methods_tag {
             winsparkle_h.C_INT,
             winsparkle_h.C_POINTER,
             winsparkle_h.C_POINTER,
-            winsparkle_h.C_LONG_LONG,
+            winsparkle_h.C_LONG,
             winsparkle_h.C_POINTER
         );
 
@@ -90,9 +90,11 @@ public class win_sparkle_config_methods_tag {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, long _x2, MemorySegment _x3) {
+        public static int invoke(MemorySegment funcPtr, MemorySegment _x0, MemorySegment _x1, long _x2, MemorySegment _x3) {
             try {
                 return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2, _x3);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -111,7 +113,7 @@ public class win_sparkle_config_methods_tag {
         return config_read$LAYOUT;
     }
 
-    private static final long config_read$OFFSET = 0;
+    private static final long config_read$OFFSET = $LAYOUT.byteOffset(groupElement("config_read"));
 
     /**
      * Offset for field:
@@ -148,9 +150,9 @@ public class win_sparkle_config_methods_tag {
      * void (*config_write)(const char *, const wchar_t *, void *) __attribute__((cdecl))
      * }
      */
-    public static class config_write {
+    public final static class config_write {
 
-        config_write() {
+        private config_write() {
             // Should not be called directly
         }
 
@@ -189,9 +191,11 @@ public class win_sparkle_config_methods_tag {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static void invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, MemorySegment _x2) {
+        public static void invoke(MemorySegment funcPtr, MemorySegment _x0, MemorySegment _x1, MemorySegment _x2) {
             try {
                  DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -210,7 +214,7 @@ public class win_sparkle_config_methods_tag {
         return config_write$LAYOUT;
     }
 
-    private static final long config_write$OFFSET = 8;
+    private static final long config_write$OFFSET = $LAYOUT.byteOffset(groupElement("config_write"));
 
     /**
      * Offset for field:
@@ -247,9 +251,9 @@ public class win_sparkle_config_methods_tag {
      * void (*config_delete)(const char *, void *) __attribute__((cdecl))
      * }
      */
-    public static class config_delete {
+    public final static class config_delete {
 
-        config_delete() {
+        private config_delete() {
             // Should not be called directly
         }
 
@@ -287,9 +291,11 @@ public class win_sparkle_config_methods_tag {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static void invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1) {
+        public static void invoke(MemorySegment funcPtr, MemorySegment _x0, MemorySegment _x1) {
             try {
                  DOWN$MH.invokeExact(funcPtr, _x0, _x1);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -308,7 +314,7 @@ public class win_sparkle_config_methods_tag {
         return config_delete$LAYOUT;
     }
 
-    private static final long config_delete$OFFSET = 16;
+    private static final long config_delete$OFFSET = $LAYOUT.byteOffset(groupElement("config_delete"));
 
     /**
      * Offset for field:
@@ -352,7 +358,7 @@ public class win_sparkle_config_methods_tag {
         return user_data$LAYOUT;
     }
 
-    private static final long user_data$OFFSET = 24;
+    private static final long user_data$OFFSET = $LAYOUT.byteOffset(groupElement("user_data"));
 
     /**
      * Offset for field:
