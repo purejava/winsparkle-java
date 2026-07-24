@@ -3,6 +3,7 @@
 
 [![License](https://img.shields.io/github/license/purejava/winsparkle-java.svg)](https://github.com/purejava/winsparkle-java/blob/master/LICENSE)
 [![Maven Central](https://img.shields.io/maven-central/v/org.purejava/winsparkle-java.svg?label=Maven%20Central)](https://central.sonatype.com/search?q=winsparkle-java&smo=true&namespace=org.purejava)
+<a href="#supported-platforms"><img alt="Windows" src="https://img.shields.io/badge/Windows-supported-blue.svg" /></a>
 
 Java bindings for WinSparkle in 100% pure Java
 
