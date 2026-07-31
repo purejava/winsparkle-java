@@ -207,23 +207,23 @@ public class winsparkle_h extends winsparkle_h$shared {
     public static int __WORDSIZE() {
         return __WORDSIZE;
     }
-    private static final int __WORDSIZE_TIME64_COMPAT32 = (int)1L;
+    private static final int __WORDSIZE_TIME64_COMPAT32 = (int)0L;
     /**
      * {@snippet lang=c :
-     * #define __WORDSIZE_TIME64_COMPAT32 1
+     * #define __WORDSIZE_TIME64_COMPAT32 0
      * }
      */
     public static int __WORDSIZE_TIME64_COMPAT32() {
         return __WORDSIZE_TIME64_COMPAT32;
     }
-    private static final int __SYSCALL_WORDSIZE = (int)64L;
+    private static final int __TIMESIZE = (int)64L;
     /**
      * {@snippet lang=c :
-     * #define __SYSCALL_WORDSIZE 64
+     * #define __TIMESIZE 64
      * }
      */
-    public static int __SYSCALL_WORDSIZE() {
-        return __SYSCALL_WORDSIZE;
+    public static int __TIMESIZE() {
+        return __TIMESIZE;
     }
     private static final int __USE_TIME_BITS64 = (int)1L;
     /**
@@ -440,15 +440,6 @@ public class winsparkle_h extends winsparkle_h$shared {
      */
     public static int __STATFS_MATCHES_STATFS64() {
         return __STATFS_MATCHES_STATFS64;
-    }
-    private static final int __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64 = (int)1L;
-    /**
-     * {@snippet lang=c :
-     * #define __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64 1
-     * }
-     */
-    public static int __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64() {
-        return __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64;
     }
     private static final int __FD_SETSIZE = (int)1024L;
     /**
@@ -729,10 +720,10 @@ public class winsparkle_h extends winsparkle_h$shared {
     public static int WIN_SPARKLE_VERSION_MINOR() {
         return WIN_SPARKLE_VERSION_MINOR;
     }
-    private static final int WIN_SPARKLE_VERSION_MICRO = (int)3L;
+    private static final int WIN_SPARKLE_VERSION_MICRO = (int)4L;
     /**
      * {@snippet lang=c :
-     * #define WIN_SPARKLE_VERSION_MICRO 3
+     * #define WIN_SPARKLE_VERSION_MICRO 4
      * }
      */
     public static int WIN_SPARKLE_VERSION_MICRO() {
@@ -752,7 +743,7 @@ public class winsparkle_h extends winsparkle_h$shared {
     public static final OfLong size_t = winsparkle_h.C_LONG;
     /**
      * {@snippet lang=c :
-     * typedef int wchar_t
+     * typedef unsigned int wchar_t
      * }
      */
     public static final OfInt wchar_t = winsparkle_h.C_INT;
@@ -938,10 +929,10 @@ public class winsparkle_h extends winsparkle_h$shared {
     public static final OfInt __mode_t = winsparkle_h.C_INT;
     /**
      * {@snippet lang=c :
-     * typedef unsigned long __nlink_t
+     * typedef unsigned int __nlink_t
      * }
      */
-    public static final OfLong __nlink_t = winsparkle_h.C_LONG;
+    public static final OfInt __nlink_t = winsparkle_h.C_INT;
     /**
      * {@snippet lang=c :
      * typedef long __off_t
@@ -1034,10 +1025,10 @@ public class winsparkle_h extends winsparkle_h$shared {
     public static final AddressLayout __timer_t = winsparkle_h.C_POINTER;
     /**
      * {@snippet lang=c :
-     * typedef long __blksize_t
+     * typedef int __blksize_t
      * }
      */
-    public static final OfLong __blksize_t = winsparkle_h.C_LONG;
+    public static final OfInt __blksize_t = winsparkle_h.C_INT;
     /**
      * {@snippet lang=c :
      * typedef long __blkcnt_t
@@ -5259,15 +5250,6 @@ public class winsparkle_h extends winsparkle_h$shared {
     public static long _POSIX_C_SOURCE() {
         return _POSIX_C_SOURCE;
     }
-    private static final int __TIMESIZE = (int)64L;
-    /**
-     * {@snippet lang=c :
-     * #define __TIMESIZE 64
-     * }
-     */
-    public static int __TIMESIZE() {
-        return __TIMESIZE;
-    }
     private static final long __STDC_IEC_60559_BFP__ = 201404L;
     /**
      * {@snippet lang=c :
@@ -5294,6 +5276,15 @@ public class winsparkle_h extends winsparkle_h$shared {
      */
     public static long __STDC_ISO_10646__() {
         return __STDC_ISO_10646__;
+    }
+    private static final int __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64 = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * #define __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64 1
+     * }
+     */
+    public static int __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64() {
+        return __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64;
     }
     private static final long CLOCKS_PER_SEC = 1000000L;
     /**
@@ -5324,13 +5315,13 @@ public class winsparkle_h extends winsparkle_h$shared {
     }
     /**
      * {@snippet lang=c :
-     * #define WIN_SPARKLE_VERSION_STRING "0.9.3"
+     * #define WIN_SPARKLE_VERSION_STRING "0.9.4"
      * }
      */
     public static MemorySegment WIN_SPARKLE_VERSION_STRING() {
         class Holder {
             static final MemorySegment WIN_SPARKLE_VERSION_STRING
-                = winsparkle_h.LIBRARY_ARENA.allocateFrom("0.9.3");
+                = winsparkle_h.LIBRARY_ARENA.allocateFrom("0.9.4");
         }
         return Holder.WIN_SPARKLE_VERSION_STRING;
     }
