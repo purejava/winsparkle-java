@@ -4,14 +4,17 @@
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
+
 updates:
   - package-ecosystem: "maven"
+    target-branch: "develop"
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
       day: "saturday"
 
   - package-ecosystem: "github-actions"
+    target-branch: "develop"
     directory: "/" # even for `.github/workflows`
     schedule:
       interval: "monthly"
@@ -20,15 +23,15 @@ updates:
         patterns:
           - "*"
 
-updates:
   - package-ecosystem: "maven"
-    target-branch: without-dll
+    target-branch: "without-dll"
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
       day: "saturday"
 
   - package-ecosystem: "github-actions"
+    target-branch: "without-dll"
     directory: "/" # even for `.github/workflows`
     schedule:
       interval: "monthly"
