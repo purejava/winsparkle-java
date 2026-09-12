@@ -11,6 +11,10 @@ updates:
     schedule:
       interval: "weekly"
       day: "saturday"
+    groups:
+      maven-dependencies:
+        patterns:
+          - "*"
 
   - package-ecosystem: "github-actions"
     directory: "/" # even for `.github/workflows`
@@ -27,6 +31,10 @@ updates:
     schedule:
       interval: "weekly"
       day: "saturday"
+    groups:
+      maven-dependencies:
+        patterns:
+          - "*"
 
   - package-ecosystem: "github-actions"
     target-branch: "without-dll"
