@@ -7,14 +7,12 @@ version: 2
 
 updates:
   - package-ecosystem: "maven"
-    target-branch: "develop"
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
       day: "saturday"
 
   - package-ecosystem: "github-actions"
-    target-branch: "develop"
     directory: "/" # even for `.github/workflows`
     schedule:
       interval: "monthly"
